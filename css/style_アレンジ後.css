@@ -1,0 +1,433 @@
+/* ここから下に記載していく */
+
+
+body{
+    width: 1366px;
+    color:#333333;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+body h2{
+    font-family: 'Noto Serif', serif; 
+}
+
+/* ウェブフォント */
+/* font-family: 'Merriweather', serif; */
+/* font-family: 'Noto Sans JP', sans-serif; */
+/* font-family: 'Noto Serif', serif; */
+
+/* 1）ナビゲーションとメーンビジュアル */
+.g_navi{
+    display: flex;
+    justify-content: space-between;
+}
+
+.n_logo{
+    /* height: 125px; */
+    padding: 30px;
+}
+
+.n_area{
+    font-size: 21px;
+    font-family: 'Merriweather', serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navi{
+    text-align: center;
+    padding: 50px 25px 50px 25px;
+}
+
+.navi a{
+    text-decoration: none;
+    color:black;
+    /*　【？疑問】
+    vertical-align: middle;
+    親要素（n_area）でalign-items:centerを入れたのでいらなくなった？ */
+}
+
+/* メインビジュアル */
+.main_visual{
+    height: 500px;
+    /* 【最適？】高さはサンプルを参考に任意で設定 */
+    background-image: url(../img/mainbg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    text-shadow:0 0 1em rgba(0,0,0,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* 【？疑問】↑２行をdivでグルーピングしたからか、
+        text-alignを使わないと箱内で左寄寄せになる気が… */
+}
+
+/* 【試行錯誤】
+    .main_visual_text{
+    display: inline-block;
+    vertical-align:middle;
+    line-height: normal;
+} */
+
+.main_visual h1{
+    font-size: 50px;
+    letter-spacing: -0.５em；
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.main_visual p{
+    font-size: 35px;
+}
+
+
+.main_visual_text {
+    animation-name: fadein;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+}
+@keyframes fadein {
+from {
+    opacity: 0;
+    color:gold;
+    transform: translateY(20px);
+}
+to {
+    opacity: 1;
+    color:white;
+    transform: translateY(0);
+}
+}
+
+/* 2）メーン*/
+/* アバウト */
+
+.about_text{
+    text-align: center;
+}
+
+/* アバウト・テキスト部分 */
+
+.about_text h2{
+    font-size: 24px;
+    color:#ffd61a;
+    font-weight: bold;
+    margin-top:60px;
+    margin-bottom: 30px;;
+}
+
+.about_text h3{
+    font-size: 18px;
+    margin-bottom: 60px;;
+}
+
+.about_text p{
+    margin-bottom: 40px;
+    line-height: 2;
+}
+
+/* アバウト・イメージ部分 */
+
+.about_img{
+    /* width: 1366px; */
+    /* display: flex;
+    justify-content: center; */
+    /* position: center; */
+    overflow: hidden;
+    padding-top: 40px;
+    margin-bottom: 30px;
+}
+ 
+.yoko_about{
+    display: flex;
+    justify-content: center;
+} 
+
+
+/* コース説明 */
+.course_text{
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.course_text h2{
+    font-size: 24px;
+    /* color:#ffd61a; */
+    font-weight: bold;
+    margin-top:60px;
+    margin-bottom: 30px;;
+}
+
+.course_text p{
+    margin-bottom: 40px;
+    line-height: 2;
+}
+
+/* コースの箱組み */
+/* １段目 */
+
+.course_hako1{
+    width: 100%; 
+    display: flex;
+    justify-content: center;
+}
+
+.hako_txt{
+    width: 100%;
+    padding-left: 50px;
+    background-color: #fafafa;
+    display: flex;
+    align-items: center;
+}
+
+.hako_txt h2{
+    font-size: 28px;
+    margin-bottom: 40px;
+}
+
+.hako_txt p{
+    line-height: 2;
+}
+
+/* ニュース */
+.news_text{
+    text-align: center;
+}
+.news_text h2{
+    font-size: 24px;
+    color:#ffd61a;
+    font-weight: bold;
+    margin-top:60px;
+    margin-bottom: 30px;;
+}
+
+.news_text p{
+    margin-bottom: 60px;
+    line-height: 2;
+}
+
+.content_hako{
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.content_hako:hover{
+    opacity: 0.6;
+}
+
+.content_hako_img {
+	overflow: hidden;	/*拡大時にはみ出た部分を隠す*/
+	width: 300px;	/*画像の幅*/	/*画像の高さ*/
+    background: #000;
+}
+.content_hako_img img {
+	display: block;
+	transition-duration: 0.3s;	/*変化に掛かる時間*/
+}
+.content_hako_img img:hover {
+	transform: scale(1.1);	/*画像の拡大率*/
+    transition-duration: 0.3s;	/*変化に掛かる時間*/
+    opacity: 0.6;
+}
+
+
+/* ニュースのコンテンツ */
+.news_content{
+    display: flex;
+    justify-content: center; 
+}
+.content_area{
+    width: 960px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content_hako{
+    width: 300px;
+}
+.content_hako h4{
+    margin-top: 30px;
+    margin-bottom: 24px;
+}
+
+.content_hako p{
+    line-height: 2;
+}
+
+/* もっとみる */
+.button_area{
+    display: flex;
+    justify-content: center;
+}
+
+.btn{
+    width: 300px;
+    height: 60px;
+    background-color: #ffd61a;
+    border-radius: 5px;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:60px auto;
+}
+
+.btn:hover{
+    text-decoration: none;
+    background-color: rgb(103, 192, 31);
+}
+
+/* ホバーでポイント時に下線、来訪後にフォントを青にする */
+.button_area a{
+    text-decoration: none;
+    color: white;
+}
+
+.button_area a:visited{
+    color: blue;
+}
+
+.button_area a:hover{
+    text-decoration: underline;
+}
+
+
+/* アクセス */
+/* タイトル */
+.access_title{
+    background-color: #fafafa;
+    text-align: center;
+}
+
+.access_title h2{
+    font-size: 24px;
+    font-weight: bold;
+    padding-top:60px;
+    margin-bottom: 30px;;
+}
+
+.access_title p{
+    padding-bottom: 60px;
+    line-height: 2;
+}
+
+/* マップ埋め込み */
+
+/* 詳細 */
+.access_txt{
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+    padding-bottom: 30px;
+}
+
+
+.access_txt_box table{   
+    text-align: left;
+    height: 50px;
+    line-height: 30px;
+}
+
+.access_txt_box th,td{
+    height: 50px;
+    padding-top: 10px;
+    padding-right: 50px;
+}
+/* なぜか下のフォームのbbが効いて困る */
+
+
+/* コンタクト */
+/* コンタクトの説明 */
+.contact{
+    text-align: center;
+    margin:40px;
+}
+
+.contact h2{
+    font-size: 24px;
+    font-weight: bold;
+    margin-top:60px;
+    margin-bottom: 30px;;
+}
+
+.contact h3{
+    font-size: 18px;
+    margin-bottom: 60px;;
+}
+
+.contact p{
+    line-height: 2;
+    padding-bottom: 30px;
+}
+
+/* 問い合わせフォーム */
+.form {
+    display: flex;
+    justify-content: center;
+}
+
+.form_area{
+    line-height: 24px;
+}
+
+.waku{
+    width: 328px;
+    height: 36px;
+}
+
+.waku2{
+    width: 328px;
+    height: 150px;
+}
+
+.big{
+    transform: scale(2.0);
+    margin-right: 10px; 
+}
+
+.form table{
+    border-top: solid 4px #bfbfbf;
+}
+
+.form th{
+    width: 240px;
+    text-align: start;
+    vertical-align: top;
+    border-right: solid 1px #bfbfbf;
+    border-bottom: solid 1px #bfbfbf;
+    padding-left:16px;
+    padding-right: 60px;
+    padding-top:15px;
+}
+
+.form td{
+    width: 400px;
+    padding:8px;
+    border-bottom: solid 1px #bfbfbf
+}
+
+/* 送信ボタンにポイントを置くと下線 */
+.btn[type=submit]:hover{
+    text-decoration: underline;
+}
+
+/* フッター */
+.footer_area{
+    margin-top:140px;
+    text-align: center;
+    color:white;
+    font-size: 20px;
+    background-color: #707070;
+}
+
+.footer_area p{
+    padding-top:30px;
+    padding-bottom: 30px;
+}
+

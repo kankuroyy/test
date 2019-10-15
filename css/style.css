@@ -1,0 +1,356 @@
+/* ここから下に記載していく */
+
+
+body{
+    width: 1366px;
+    color:#333333;
+}
+
+/* 1）ナビゲーションとメーンビジュアル */
+.g_navi{
+    display: flex;
+    justify-content: space-between;
+}
+
+.n_logo{
+    /* height: 125px; */
+    padding: 30px;
+}
+
+.n_area{
+    font-size: 21px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navi{
+    text-align: center;
+    padding: 50px 25px 50px 25px;
+}
+
+.navi a{
+    text-decoration: none;
+    color:black;
+    /*　【？疑問】
+    vertical-align: middle;
+    親要素（n_area）でalign-items:centerを入れたのでいらなくなった？ */
+}
+
+/* メインビジュアル */
+.main_visual{
+    height: 500px;
+    /* 【最適？】高さはサンプルを参考に任意で設定 */
+    background-image: url(../img/mainbg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* 【？疑問】↑２行をdivでグルーピングしたからか、
+        text-alignを使わないと箱内で左寄寄せになる気が… */
+}
+
+/* 【試行錯誤】
+    .main_visual_text{
+    display: inline-block;
+    vertical-align:middle;
+    line-height: normal;
+} */
+
+.main_visual h1{
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.main_visual p{
+    font-size: 35px;
+}
+
+/* 2）メーン*/
+/* アバウト */
+
+.about_text{
+    text-align: center;
+}
+
+/* アバウト・テキスト部分 */
+
+.about_text h2{
+    font-size: 24px;
+    color:#ffd61a;
+    font-weight: bold;
+    margin-top:60px;
+    margin-bottom: 30px;;
+}
+
+.about_text h3{
+    font-size: 18px;
+    margin-bottom: 60px;;
+}
+
+.about_text p{
+    margin-bottom: 40px;
+    line-height: 2;
+}
+
+/* アバウト・イメージ部分 */
+
+.about_img{
+    /* width: 1366px; */
+    /* display: flex;
+    justify-content: center; */
+    /* position: center; */
+    overflow: hidden;
+    padding-top: 40px;
+    margin-bottom: 30px;
+}
+ 
+.yoko_about{
+    display: flex;
+    justify-content: center;
+} 
+
+.about_img .yoko_about{
+    width: 1366px;
+}
+
+/* コース説明 */
+.course_text{
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.course_text h2{
+    font-size: 24px;
+    /* color:#ffd61a; */
+    font-weight: bold;
+    margin-top:60px;
+    margin-bottom: 30px;;
+}
+
+.course_text p{
+    margin-bottom: 40px;
+    line-height: 2;
+}
+
+/* コースの箱組み */
+/* １段目 */
+
+.couse_hako{
+
+}
+
+.course_hako1{
+    width: 100%; 
+    display: flex;
+    justify-content: center;
+}
+
+.hako_txt{
+    width: 100%;
+    padding-left: 50px;
+    background-color: #fafafa;
+    display: flex;
+    align-items: center;
+}
+
+.hako_txt h2{
+    font-size: 28px;
+    margin-bottom: 40px;
+}
+
+.hako_txt p{
+    line-height: 2;
+}
+
+/* ニュース */
+.news_text{
+    text-align: center;
+}
+.news_text h2{
+    font-size: 24px;
+    color:#ffd61a;
+    font-weight: bold;
+    margin-top:60px;
+    margin-bottom: 30px;;
+}
+
+.news_text p{
+    margin-bottom: 60px;
+    line-height: 2;
+}
+
+/* ニュースのコンテンツ */
+.news_content{
+    display: flex;
+    justify-content: center; 
+}
+.content_area{
+    width: 960px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content_hako{
+    width: 300px;
+}
+.content_hako h4{
+    margin-top: 30px;
+    margin-bottom: 24px;
+}
+
+.content_hako p{
+    line-height: 2;
+}
+
+/* もっとみる */
+.button_area{
+    display: flex;
+    justify-content: center;
+}
+
+.button_press{
+    width: 300px;
+    height: 60px;
+    background-color: #ffd61a;
+    color: white;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:60px auto;
+}
+
+
+/* アクセス */
+/* タイトル */
+.access_title{
+    background-color: #fafafa;
+    text-align: center;
+}
+
+.access_title h2{
+    font-size: 24px;
+    font-weight: bold;
+    padding-top:60px;
+    margin-bottom: 30px;;
+}
+
+.access_title p{
+    padding-bottom: 60px;
+    line-height: 2;
+}
+
+/* マップ埋め込み */
+
+/* 詳細 */
+.access_txt{
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+    padding-bottom: 30px;
+}
+
+
+.access_txt table{   
+    text-align: left;
+    height: 50px;
+    line-height: 30px;
+}
+
+.access_txt th,td{
+    height: 50px;
+    padding-right: 50px;
+}
+
+
+/* コンタクト */
+/* コンタクトの説明 */
+.contact{
+    text-align: center;
+    margin:40px;
+}
+
+.contact h2{
+    font-size: 24px;
+    font-weight: bold;
+    margin-top:60px;
+    margin-bottom: 30px;;
+}
+
+.contact h3{
+    font-size: 18px;
+    margin-bottom: 60px;;
+}
+
+.contact p{
+    line-height: 2;
+    padding-bottom: 30px;
+}
+
+/* 問い合わせフォーム */
+.form {
+    display: flex;
+    justify-content: center;
+}
+
+.form_area{
+    line-height: 24px;
+}
+
+.waku{
+    width: 328px;
+    height: 36px;
+}
+
+.waku2{
+    width: 328px;
+    height: 150px;
+}
+
+.big{
+    transform: scale(2.0);
+    margin-right: 10px; 
+}
+
+.form table{
+    border-top: solid 4px #bfbfbf;
+}
+
+.form th,td{
+    border-bottom: solid 1px #bfbfbf;
+}
+
+.form th{
+    width: 240px;
+    text-align: start;
+    border-right: solid 1px #bfbfbf;
+    padding-left:16px;
+    padding-right: 60px;
+    padding-top:15px;
+}
+
+.form td{
+    width: 400px;
+    padding:8px;
+}
+
+/* フッター */
+.footer_area{
+    margin-top:140px;
+    text-align: center;
+    color:white;
+    font-size: 20px;
+    background-color: #707070;
+}
+
+.footer_area p{
+    padding-top:30px;
+    padding-bottom: 30px;
+}
+
