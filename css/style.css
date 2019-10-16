@@ -38,21 +38,54 @@ body{
 }
 
 /* メインビジュアル */
-.main_visual{
+/* .main_visual{
     height: 500px;
     /* 【最適？】高さはサンプルを参考に任意で設定 */
-    background-image: url(../img/mainbg.png);
+    /* background-image: url(../img/mainbg.png);
     background-repeat: no-repeat;
     background-size: cover;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    text-align: center; */ 
     /* 【？疑問】↑２行をdivでグルーピングしたからか、
         text-alignを使わないと箱内で左寄寄せになる気が… */
+/* } */
+
+.main_visual{
+    width: 1366px;
+    height: 500px;
+    background: linear-gradient(-45deg, rgba(4, 114, 124, 0.4), rgba(17, 66, 99, 0.6));
+    position: relative;
+    text-align: center;
+    object-fit: cover;
+    overflow: hidden;
 }
 
+#bg-video{
+    /* position: fixed;
+    right: 0;
+    bottom: 0; */
+    /* min-width: 100%;
+    min-height: 100%; */
+    width: 100%;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -100;
+    background: url('./img/mainbg.png') no-repeat;
+    background-size: cover;
+   }
+
+   .main_visual_text{
+    position: absolute; top:180px; left: 300px;
+    z-index: 2; 
+    color: white;
+    text-align: center;
+   }
+
+   
 /* 【試行錯誤】
     .main_visual_text{
     display: inline-block;
@@ -109,14 +142,22 @@ body{
     margin-bottom: 30px;
 }
  
-.yoko_about{
+/* .yoko_about{
     display: flex;
-    justify-content: center;
+    justify-content: center; */
 } 
 
-.about_img .yoko_about{
+
+.yoko_about{
+    padding: 0;}
+.yoko_about img { width: 100%;}
+.yoko_about div { margin: 0 5px;}
+.yoko_about .slick-next { right: 17px;　z-index: 100;}
+.yoko_about .slick-prev { left: 23px; z-index: 100;}
+
+/* .about_img .yoko_about{
     width: 1366px;
-}
+} */
 
 /* コース説明 */
 .course_text{
@@ -365,6 +406,64 @@ body{
 }
 
 
+
+/* P２Pトライ */
+.appear{
+    position: fixed; 
+    bottom: 0; 
+    right: 0;
+    
+}
+
+.appear_box{
+    width: 250px;
+    z-index: 10;
+    display:none;
+}
+
+.appear_txt{
+    display: flex;
+    justify-content: center;
+}
+
+.txt_hako{
+    width: 100px; 
+    height: 50px;
+    position: relative;
+    display: inline-block;
+    margin: 1.5em 0;
+    padding: 15px 10px;
+    color: #555;
+    font-size: 16px;
+    background: #e0edff;
+    border-radius: 15px;
+}
+
+.txt1,txt2{
+    vertical-align: center;
+    z-index: 0;
+}
+
+.txt_hako:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -15px;
+    border: 15px solid transparent;
+    border-top: 15px solid #e0edff;
+  }
+ 
+.appear_img{
+    width: 200px;
+    height: 150px;
+    display: flex;
+    object-fit: cover;
+}
+
+.appear_img img{
+    width: 100%;
+}
 
 /* フッター */
 .footer_area{

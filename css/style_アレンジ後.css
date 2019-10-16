@@ -1,10 +1,10 @@
 /* ここから下に記載していく */
 
-
 body{
     width: 1366px;
     color:#333333;
     font-family: 'Noto Sans JP', sans-serif;
+    margin:20px 0 0 0;
 }
 
 body h2{
@@ -17,9 +17,34 @@ body h2{
 /* font-family: 'Noto Serif', serif; */
 
 /* 1）ナビゲーションとメーンビジュアル */
+
+#header{
+    background: #fff;
+    /* display: flex; */
+    padding: 10px 0;
+    position: absolute;
+    filter: drop-shadow(10px 5px 10px rgba(148, 147, 147, 0.6));
+    /* justify-content: space-between; */
+    /* width: 1366px; */
+}
+#header.fixed{
+    position: fixed;
+    top: 0;
+}
+
+#header.transform{
+    background: rgba(255,255,255,0.9);
+    height: 90px;
+}
+
+#header.transform .n_logo img{
+    height: 70%;
+}
+
 .g_navi{
     display: flex;
     justify-content: space-between;
+    width: 1366px;
 }
 
 .n_logo{
@@ -37,7 +62,7 @@ body h2{
 
 .navi{
     text-align: center;
-    padding: 50px 25px 50px 25px;
+    padding: 20px 25px 50px 25px;
 }
 
 .navi a{
@@ -48,29 +73,67 @@ body h2{
     親要素（n_area）でalign-items:centerを入れたのでいらなくなった？ */
 }
 
-/* メインビジュアル */
-.main_visual{
-    height: 500px;
-    /* 【最適？】高さはサンプルを参考に任意で設定 */
-    background-image: url(../img/mainbg.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: white;
-    text-shadow:0 0 1em rgba(0,0,0,0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    /* 【？疑問】↑２行をdivでグルーピングしたからか、
-        text-alignを使わないと箱内で左寄寄せになる気が… */
+.n_area .navi{
+    padding-bottom: .2em;
+    background: -webkit-linear-gradient(left, #ffe653 50%, transparent 50%) 100% bottom / 200% 50% no-repeat;
+    background: linear-gradient(to right, #ffe653 50%, transparent 50%) 100% bottom / 200% 50% no-repeat;
+    -webkit-transition: background-position .5s ease-out;
+    transition: background-position .5s ease-out;
+  }
+  .navi:hover{
+    background-position: 0% bottom;
+  }
+
+/* 上下の帯 */
+#line .t,
+#line .b{
+	position:fixed;
+	left:0;
+	width: 1366px;
+    height:20px;
+    background-image: url(../img/c_block.png);
+    background-repeat: repeat;
+    background-size: height:100%;
+}
+#line .t{
+	z-index:100;
+	top:0;
+}
+#line .b{
+	z-index:90;
+	bottom:0;
 }
 
-/* 【試行錯誤】
-    .main_visual_text{
-    display: inline-block;
-    vertical-align:middle;
-    line-height: normal;
-} */
+
+/* メインビジュアル */
+.main_visual{
+    width: 1366px;
+    height:470px;
+    background: linear-gradient(-45deg, rgba(4, 114, 124, 0.4), rgba(17, 66, 99, 0.6));
+    position: relative;
+    text-align: center;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+#bg-video{
+    width: 100%;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -100;
+    background: url('./img/mainbg.png') no-repeat;
+    background-size: cover;
+   }
+
+   .main_visual_text{
+    position: absolute; top:150px; left: 300px;
+    z-index: 2; 
+    color: white;
+    font-family: 'Noto Sans JP', sans-serif;
+    text-align: center;
+   }
+
 
 .main_visual h1{
     font-size: 50px;
@@ -105,8 +168,18 @@ to {
 /* 2）メーン*/
 /* アバウト */
 
+
+.about_wrap{
+    display: flex;
+    justify-content: center;
+    background-color: #fafafa;
+}
+
 .about_text{
+    width: 700px;
+    background-color: white;
     text-align: center;
+    padding-top: 100px;
 }
 
 /* アバウト・テキスト部分 */
@@ -132,12 +205,7 @@ to {
 /* アバウト・イメージ部分 */
 
 .about_img{
-    /* width: 1366px; */
-    /* display: flex;
-    justify-content: center; */
-    /* position: center; */
     overflow: hidden;
-    padding-top: 40px;
     margin-bottom: 30px;
 }
  
@@ -151,6 +219,7 @@ to {
 .course_text{
     text-align: center;
     padding-bottom: 30px;
+    padding-top: 100px;
 }
 
 .course_text h2{
@@ -195,6 +264,7 @@ to {
 /* ニュース */
 .news_text{
     text-align: center;
+    padding-top: 100px;
 }
 .news_text h2{
     font-size: 24px;
@@ -302,6 +372,7 @@ to {
 .access_title{
     background-color: #fafafa;
     text-align: center;
+    padding-top: 100px;
 }
 
 .access_title h2{
@@ -347,6 +418,7 @@ to {
 .contact{
     text-align: center;
     margin:40px;
+    padding-top: 100px;
 }
 
 .contact h2{
@@ -417,9 +489,72 @@ to {
     text-decoration: underline;
 }
 
+
+/* P２Pトライ */
+.appear{
+    display: none;
+    position: fixed; /* 要素の位置を固定する */
+    bottom: 0; /* 基準の位置を画面の一番下に指定する */
+    right: 0;
+    margin-bottom: 30px;
+}
+
+.appear_box{
+    width: 250px;
+    z-index: 10;
+}
+
+.appear_txt{
+    display: flex;
+    justify-content: normal;
+}
+
+.txt_hako{
+    width: 150px; 
+    height: 50px;
+    position: relative;
+    display: inline-block;
+    margin: 1.5em 0;
+    padding: 15px 10px 15px 10px;
+    color: #555;
+    font-size: 16px;
+    background: #e0edff;
+    border-radius: 15px;
+    vertical-align: center;
+    text-align: center;
+}
+
+.txt_hako p{
+    z-index: 0;
+}
+
+.txt_hako:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -15px;
+    border: 15px solid transparent;
+    border-top: 15px solid #e0edff;
+  }
+ 
+.appear_img{
+    width: 200px;
+    height: 150px;
+    display: flex;
+    object-fit: cover;
+}
+
+.appear_img img{
+    width: 100%;
+}
+
+
+
 /* フッター */
 .footer_area{
     margin-top:140px;
+    padding-bottom: 10px;
     text-align: center;
     color:white;
     font-size: 20px;
