@@ -1,15 +1,50 @@
 /* ここから下に記載していく */
 
-
 body{
     width: 1366px;
     color:#333333;
+    font-family: 'Noto Sans JP', sans-serif;
+    margin:20px 0 0 0;
 }
 
+body h2{
+    font-family: 'Noto Serif', serif; 
+}
+
+/* ウェブフォント */
+/* font-family: 'Merriweather', serif; */
+/* font-family: 'Noto Sans JP', sans-serif; */
+/* font-family: 'Noto Serif', serif; */
+
 /* 1）ナビゲーションとメーンビジュアル */
+
+#header{
+    background: #fff;
+    /* display: flex; */
+    padding: 10px 0;
+    position: absolute;
+    filter: drop-shadow(10px 5px 10px rgba(148, 147, 147, 0.6));
+    /* justify-content: space-between; */
+    /* width: 1366px; */
+}
+#header.fixed{
+    position: fixed;
+    top: 0;
+}
+
+#header.transform{
+    background: rgba(255,255,255,0.9);
+    height: 90px;
+}
+
+#header.transform .n_logo img{
+    height: 70%;
+}
+
 .g_navi{
     display: flex;
     justify-content: space-between;
+    width: 1366px;
 }
 
 .n_logo{
@@ -19,6 +54,7 @@ body{
 
 .n_area{
     font-size: 21px;
+    font-family: 'Merriweather', serif;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,7 +62,7 @@ body{
 
 .navi{
     text-align: center;
-    padding: 50px 25px 50px 25px;
+    padding: 20px 25px 50px 25px;
 }
 
 .navi a{
@@ -37,25 +73,42 @@ body{
     親要素（n_area）でalign-items:centerを入れたのでいらなくなった？ */
 }
 
-/* メインビジュアル */
-/* .main_visual{
-    height: 500px;
-    /* 【最適？】高さはサンプルを参考に任意で設定 */
-    /* background-image: url(../img/mainbg.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center; */ 
-    /* 【？疑問】↑２行をdivでグルーピングしたからか、
-        text-alignを使わないと箱内で左寄寄せになる気が… */
-/* } */
+.n_area .navi{
+    padding-bottom: .2em;
+    background: -webkit-linear-gradient(left, #ffe653 50%, transparent 50%) 100% bottom / 200% 50% no-repeat;
+    background: linear-gradient(to right, #ffe653 50%, transparent 50%) 100% bottom / 200% 50% no-repeat;
+    -webkit-transition: background-position .5s ease-out;
+    transition: background-position .5s ease-out;
+  }
+  .navi:hover{
+    background-position: 0% bottom;
+  }
 
+/* 上下の帯 */
+#line .t,
+#line .b{
+	position:fixed;
+	left:0;
+	width: 1366px;
+    height:20px;
+    background-image: url(../img/c_block.png);
+    background-repeat: repeat;
+    background-size: height:100%;
+}
+#line .t{
+	z-index:100;
+	top:0;
+}
+#line .b{
+	z-index:90;
+	bottom:0;
+}
+
+
+/* メインビジュアル */
 .main_visual{
     width: 1366px;
-    height: 500px;
+    height:470px;
     background: linear-gradient(-45deg, rgba(4, 114, 124, 0.4), rgba(17, 66, 99, 0.6));
     position: relative;
     text-align: center;
@@ -64,11 +117,6 @@ body{
 }
 
 #bg-video{
-    /* position: fixed;
-    right: 0;
-    bottom: 0; */
-    /* min-width: 100%;
-    min-height: 100%; */
     width: 100%;
     height: auto;
     min-width: 100%;
@@ -79,22 +127,17 @@ body{
    }
 
    .main_visual_text{
-    position: absolute; top:180px; left: 300px;
+    position: absolute; top:150px; left: 300px;
     z-index: 2; 
     color: white;
+    font-family: 'Noto Sans JP', sans-serif;
     text-align: center;
    }
 
-   
-/* 【試行錯誤】
-    .main_visual_text{
-    display: inline-block;
-    vertical-align:middle;
-    line-height: normal;
-} */
 
 .main_visual h1{
     font-size: 50px;
+    letter-spacing: -0.５em；
     font-weight: bold;
     margin-bottom: 30px;
 }
@@ -103,11 +146,40 @@ body{
     font-size: 35px;
 }
 
+
+.main_visual_text {
+    animation-name: fadein;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+}
+@keyframes fadein {
+from {
+    opacity: 0;
+    color:gold;
+    transform: translateY(20px);
+}
+to {
+    opacity: 1;
+    color:white;
+    transform: translateY(0);
+}
+}
+
 /* 2）メーン*/
 /* アバウト */
 
+
+.about_wrap{
+    display: flex;
+    justify-content: center;
+    background-color: #fafafa;
+}
+
 .about_text{
+    width: 700px;
+    background-color: white;
     text-align: center;
+    padding-top: 100px;
 }
 
 /* アバウト・テキスト部分 */
@@ -133,36 +205,21 @@ body{
 /* アバウト・イメージ部分 */
 
 .about_img{
-    /* width: 1366px; */
-    /* display: flex;
-    justify-content: center; */
-    /* position: center; */
     overflow: hidden;
-    padding-top: 40px;
     margin-bottom: 30px;
 }
  
-/* .yoko_about{
+.yoko_about{
     display: flex;
-    justify-content: center; */
+    justify-content: center;
 } 
 
-
-.yoko_about{
-    padding: 0;}
-.yoko_about img { width: 100%;}
-.yoko_about div { margin: 0 5px;}
-.yoko_about .slick-next { right: 17px;　z-index: 100;}
-.yoko_about .slick-prev { left: 23px; z-index: 100;}
-
-/* .about_img .yoko_about{
-    width: 1366px;
-} */
 
 /* コース説明 */
 .course_text{
     text-align: center;
     padding-bottom: 30px;
+    padding-top: 100px;
 }
 
 .course_text h2{
@@ -180,10 +237,6 @@ body{
 
 /* コースの箱組み */
 /* １段目 */
-
-.couse_hako{
-
-}
 
 .course_hako1{
     width: 100%; 
@@ -211,6 +264,7 @@ body{
 /* ニュース */
 .news_text{
     text-align: center;
+    padding-top: 100px;
 }
 .news_text h2{
     font-size: 24px;
@@ -224,6 +278,31 @@ body{
     margin-bottom: 60px;
     line-height: 2;
 }
+
+.content_hako{
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.content_hako:hover{
+    opacity: 0.6;
+}
+
+.content_hako_img {
+	overflow: hidden;	/*拡大時にはみ出た部分を隠す*/
+	width: 300px;	/*画像の幅*/	/*画像の高さ*/
+    background: #000;
+}
+.content_hako_img img {
+	display: block;
+	transition-duration: 0.3s;	/*変化に掛かる時間*/
+}
+.content_hako_img img:hover {
+	transform: scale(1.1);	/*画像の拡大率*/
+    transition-duration: 0.3s;	/*変化に掛かる時間*/
+    opacity: 0.6;
+}
+
 
 /* ニュースのコンテンツ */
 .news_content{
@@ -254,16 +333,37 @@ body{
     justify-content: center;
 }
 
-.button_press{
+.btn{
     width: 300px;
     height: 60px;
     background-color: #ffd61a;
-    color: white;
+    border-radius: 5px;
     font-size: 25px;
+    font-weight: bold;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     margin:60px auto;
+}
+
+.btn:hover{
+    text-decoration: none;
+    background-color: rgb(103, 192, 31);
+}
+
+/* ホバーでポイント時に下線、来訪後にフォントを青にする */
+.button_area a{
+    text-decoration: none;
+    color: white;
+}
+
+.button_area a:visited{
+    color: blue;
+}
+
+.button_area a:hover{
+    text-decoration: underline;
 }
 
 
@@ -272,6 +372,7 @@ body{
 .access_title{
     background-color: #fafafa;
     text-align: center;
+    padding-top: 100px;
 }
 
 .access_title h2{
@@ -298,16 +399,18 @@ body{
 }
 
 
-.access_txt table{   
+.access_txt_box table{   
     text-align: left;
     height: 50px;
     line-height: 30px;
 }
 
-.access_txt th,td{
+.access_txt_box th,td{
     height: 50px;
+    padding-top: 10px;
     padding-right: 50px;
 }
+/* なぜか下のフォームのbbが効いて困る */
 
 
 /* コンタクト */
@@ -315,6 +418,7 @@ body{
 .contact{
     text-align: center;
     margin:40px;
+    padding-top: 100px;
 }
 
 .contact h2{
@@ -363,14 +467,12 @@ body{
     border-top: solid 4px #bfbfbf;
 }
 
-.form th,td{
-    border-bottom: solid 1px #bfbfbf;
-}
-
 .form th{
     width: 240px;
     text-align: start;
+    vertical-align: top;
     border-right: solid 1px #bfbfbf;
+    border-bottom: solid 1px #bfbfbf;
     padding-left:16px;
     padding-right: 60px;
     padding-top:15px;
@@ -379,68 +481,50 @@ body{
 .form td{
     width: 400px;
     padding:8px;
+    border-bottom: solid 1px #bfbfbf
 }
 
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}to
-
-.content{
-    margin: 0 auto;
-    padding: 40px;
+/* 送信ボタンにポイントを置くと下線 */
+.btn[type=submit]:hover{
+    text-decoration: underline;
 }
-.modal{
-    display: none;
-    height: 100vh;
-    position:fixed;
-    top:0;
-    width: 100px;
-}
-.modal__bg{
-    background:rgba(0,0,0,0.8);
-    height: 100vh;
-    position: absolute;
-    width: 100%;
-}
-
 
 
 /* P２Pトライ */
 .appear{
-    position: fixed; 
-    bottom: 0; 
+    display: none;
+    position: fixed; /* 要素の位置を固定する */
+    bottom: 0; /* 基準の位置を画面の一番下に指定する */
     right: 0;
-    
+    margin-bottom: 30px;
 }
 
 .appear_box{
     width: 250px;
     z-index: 10;
-    display:none;
 }
 
 .appear_txt{
     display: flex;
-    justify-content: center;
+    justify-content: normal;
 }
 
 .txt_hako{
-    width: 100px; 
+    width: 150px; 
     height: 50px;
     position: relative;
     display: inline-block;
     margin: 1.5em 0;
-    padding: 15px 10px;
+    padding: 15px 10px 15px 10px;
     color: #555;
     font-size: 16px;
     background: #e0edff;
     border-radius: 15px;
+    vertical-align: center;
+    text-align: center;
 }
 
-.txt1,txt2{
-    vertical-align: center;
+.txt_hako p{
     z-index: 0;
 }
 
@@ -465,9 +549,12 @@ body{
     width: 100%;
 }
 
+
+
 /* フッター */
 .footer_area{
     margin-top:140px;
+    padding-bottom: 10px;
     text-align: center;
     color:white;
     font-size: 20px;

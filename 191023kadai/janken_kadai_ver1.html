@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<title>ジーズ学生活ゲーム</title>
+</head>
+<body>
+
+<header>
+  <p>ジーズ学生活ゲーム</p>
+</header>
+
+<main>
+  <section class="janken_area">
+    <ul class="my_btn">
+      <li id="gu_btn">グー</li>
+      <li id="cho_btn">チョキ</li>
+      <li id="par_btn">パー</li>
+    </ul>
+    
+    <div>コンピュータの出した手は？「<span id="pc_hands">なに？</span>」</div>
+    <div id="judgment">勝ち</div>
+    <!-- <div>あなたの勝ち星　<span id="star">０</span></div> -->
+    <div>
+      あなた：<span id="Point01">無得</span>点、コンピュータ：<span id="Point02">無得</span>点</div>
+  </section>
+
+  <section class="sugoroku_area">
+    <div class="dice">
+      <div id="dice_start"><input type="button" id="btn_start" value="100ptでサイコロを振る" disabled></div>
+      <div id="dice_exp">サイコロの目は<span id="dice_num">？</span>です</div>
+      <div id="dice_img"><img  id="dice_me" src="/img/1.png" alt=""></div>
+    </div>
+
+    <div class="shinkou">
+      <tr>
+        <th>あなたは</th><td><span id="MasumeMe">？</span>マス目にいます</td>
+      </tr>
+      <tr>
+        <th>コンピュータは</th><td><span id="MasumeCom">？</span>マス目にいます</td>
+      </tr>
+    </div>
+    <div class="map_wrap">
+        <div class="backGround"><img src="img/map_line.bmp" alt="">
+          <div id="buffa"><img src="img/32buffalo.png" alt=""></div>
+          <div id="kaba"><img src="img/34kaba.png" alt=""></div>
+      </div>      
+    </div>
+  
+
+  </section>
+
+
+	<script type="text/javascript" src="js/script.js"></script>
+</main>
+
+<footer></footer>
+
+
+</body>
+</html>

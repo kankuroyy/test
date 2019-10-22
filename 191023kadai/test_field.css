@@ -1,0 +1,39 @@
+body{
+    margin:0;
+}
+
+
+#buffa{
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top:0;
+    left:0;
+}
+
+.buffa.img{
+    width: 100%;
+}
+
+.masu{
+    width: 32px;
+    height: 32px;
+    text-align: center;
+}
+
+.gray{
+    background-color:gray;
+}
+
+.yellow{
+    background-color:rgb(224, 202, 75);
+}
+
+.blue{
+    background-color:rgb(38, 119, 211);
+}
+
+.yoko_wrap{
+    display:flex;
+    margin-left: 32px;
+}

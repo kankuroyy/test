@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<title>じゃんけん</title>
+</head>
+<body>
+
+<header>
+  <h1>じゃんけん</h1>
+</header>
+
+<main>
+  <ul class="my_btn">
+    <li id="gu_btn">グー</li>
+    <li id="cho_btn">チョキ</li>
+    <li id="par_btn">パー</li>
+  </ul>
+  <div>コンピュータの出した手は？「<span id="pc">なに？</span>」</div>
+  <div id="judgment">勝ち</div>
+</main>
+
+<footer></footer>
+
+<script>
+// じゃんけん選ぶ
+
+
+// ぐーの時
+$("#gu_btn").on("click", function(){
+  const r = Math.floor(Math.random()*3); 
+  console.log(r);
+  if(r == 0){
+    $("#pc").html("ぐー");
+    $("#judgment").html("あいこです");
+    $("#judgment").css("color", "gray");
+  }
+  if(r == 1){
+    $("#pc").html("チョキ");
+    $("#judgment").html("あなたの勝ち");
+    $("#judgment").css("color", "red");
+  }
+  if(r == 2){
+    $("#pc").html("パー");
+    $("#judgment").html("あなたの負け");
+    $("#judgment").css("color", "#0000ff");
+  }
+})
+// チョキのとき
+$("#cho_btn").on("click", function(){
+  const r = Math.floor(Math.random()*3); 
+  console.log(r);
+  if(r == 0){
+    $("#pc").html("ぐー");
+    $("#judgment").html("あなたの負け");
+    $("#judgment").css("color", "#0000ff");
+  }
+  if(r == 1){
+    $("#pc").html("チョキ");
+    $("#judgment").html("あいこです");
+    $("#judgment").css("color", "gray");
+  }
+  if(r == 2){
+    $("#pc").html("パー");
+    $("#judgment").html("あなたの勝ち");
+    $("#judgment").css("color", "red");
+  }
+})
+
+// パーのとき
+$("#par_btn").on("click", function(){
+  const r = Math.floor(Math.random()*3); 
+  console.log(r);
+  if(r == 0){
+    $("#pc").html("ぐー");
+    $("#judgment").html("あなたの勝ち");
+    $("#judgment").css("color", "red");
+  }
+  if(r == 1){
+    $("#pc").html("チョキ");
+    $("#judgment").html("あなたの負け");
+    $("#judgment").css("color", "#0000ff");
+  }
+  if(r == 2){
+    $("#pc").html("パー");
+    $("#judgment").html("あいこです");
+    $("#judgment").css("color", "gray");
+  }
+})
+
+</script>
+</body>
+</html>
