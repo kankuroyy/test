@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/sample.css">
 <title>ジーズ学生活ゲーム</title>
 </head>
@@ -16,12 +17,12 @@
 <main>
   <section class="janken_area">
     <ul class="my_btn">
-      <li id="gu_btn">グー</li>
-      <li id="cho_btn">チョキ</li>
-      <li id="par_btn">パー</li>
+      <div id="gu_btn", class="li_box"><img src="img/グー４.png" alt=""><img></div>
+      <div id="cho_btn", class="li_box"><img src="img/チョキ.png" alt=""><img></div>
+      <div id="par_btn", class="li_box"><img src="img/パー.png" alt=""><img></div>
     </ul>
     
-    <div>コンピュータの出した手は？「<span id="pc_hands">なに？</span>」</div>
+    <div>コンピュータの出した手は？<br>「<span id="pc_hands">なに？</span>」</div>
     <div id="judgment">勝ち</div>
     <!-- <div>あなたの勝ち星　<span id="star">０</span></div> -->
     <div>

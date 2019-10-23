@@ -1,3 +1,4 @@
+
 // ★★じゃんけんゲーム
 let pc = "#pc_hands";
 let jud = "#judgment";
@@ -477,68 +478,144 @@ $("#dice_start").on("click", function(){
     })
 
     function check_event(){
-    if(bull.x == (32+60)){
-    alert("1マス戻る");
-    // １升目
-    }
-    if(bull.x == (32*2)+60){
-    alert("1マス戻る");
-    }
+    // if(bull.x == (32+60)){
+    // alert("IDカードを忘れる。1マス戻る");
+    // bull.x -=32;
+    // console.log(bull.x);  
+    // let position = bull.x +'px';
+    // $("#buffa").css("left",position);
+    // // １升目
+    // }
+
+    // if(bull.x == (32*2)+60){
+    // alert("課題提出の朝。まだ終わらない。しかもgitの扱いが不安。１マス戻る");
+    // bull.x -=32;
+    // console.log(bull.x);  
+    // let position = bull.x +'px';
+    // $("#buffa").css("left",position);
+    // }
+
     // 2升目
-    if(bull.x == (32*3)+60){
-    alert("１マス戻る");
-    //3升目
-    }
+    // if(bull.x == (32*3)+60){
+    // alert("課題が仕上がる。気分良くHP回復。３マス進む");
+    // bull.x +=96;
+    // console.log(bull.x);  
+    // let position = bull.x +'px';
+    // $("#buffa").css("left",position);
+    // //3升目
+    // }
+    
     if(bull.x == (32*4)+60){
-    alert("１マス戻る");
+    alert("バグの原因が見つからない。イライラ。１回休み");
+    bull.x -=96;
+    console.log(bull.x);  
+    let position = bull.x +'px';
+    $("#buffa").css("left",position);
     // 4升目
     }
+    
     if(bull.x == (32*5)+60){
-    alert("１マス戻る");
+    alert("「P2P!」と連呼する。モチベーションが上がって３マス進む");
+    bull.x +=96;
+    console.log(bull.x);  
+    let position = bull.x +'px';
+    $("#buffa").css("left",position);
     // 5升目
     }
+    
     if(bull.x == (32*6)+60){
-    alert("１マス戻る");
+    alert("「横を見るな、縦を見ろ」とつぶやいて自分を鼓舞する。３マス進む");
+    bull.x +=96;
+    console.log(bull.x);  
+    let position = bull.x +'px';
+    $("#buffa").css("left",position);
     // 6升目
     }
+
     if(bull.x == (32*7)+60){
-    alert("7升目");
+      alert("「P2P!」と連呼する。モチベーションが上がって３マス進む");
+      bull.x +=96;
+      console.log(bull.x);  
+      let position = bull.x +'px';
+      $("#buffa").css("left",position);
     }
-    if(bull.x == (32*8)+60){
-    alert("8升目");
-    }
-    if(bull.x == (32*9)+60){
-    alert("9升目");
-    }
+    // if(bull.x == (32*8)+60){
+    //   alert("チューターの鋭いアドバイスに尊敬の念。頑張るぞ。３マス進む");
+    //   bull.x +=96;
+    //   console.log(bull.x);  
+    //   let position = bull.x +'px';
+    //   $("#buffa").css("left",position);
+    // }
+    // if(bull.x == (32*9)+60){
+    //   alert("「P2P!」と連呼する。モチベーションが上がって３マス進む");
+    //   bull.x +=96;
+    //   console.log(bull.x);  
+    //   let position = bull.x +'px';
+    //   $("#buffa").css("left",position);
+    // }
+
     if(bull.x == (32*10)+60){
-    alert("10升目");
+      alert("チューターの鋭いアドバイスに尊敬の念。頑張るぞ。３マス進む");
+      bull.x +=96;
+      console.log(bull.x);  
+      let position = bull.x +'px';
+      $("#buffa").css("left",position);
     }
-    if(bull.x == (32*11)+60){
-    alert("11升目");
-    }
+    // if(bull.x == (32*11)+60){
+    //   alert("バグの原因が見つからない。イライラ。３マス戻る");
+    //   bull.x -=96;
+    //   console.log(bull.x);  
+    //   let position = bull.x +'px';
+    //   $("#buffa").css("left",position);
+    // }
     if(bull.x == (32*12)+60){
-    alert("12升目");
+      alert("「P2P!」と連呼する。モチベーションが上がって３マス進む");
+      bull.x +=96;
+      console.log(bull.x);  
+      let position = bull.x +'px';
+      $("#buffa").css("left",position);
     }
-    if(bull.x == (32*13)+60){
-    alert("13升目");
-    }
+    // if(bull.x == (32*13)+60){
+    // alert("紹介されたウェブサイトがヤバくてやる気がアップ。３進む");
+    // bull.x +=96;
+    // console.log(bull.x);  
+    // let position = bull.x +'px';
+    // $("#buffa").css("left",position);
+    // }
     if(bull.x == (32*14)+60){
-    alert("14升目");
+      alert("バグの原因が見つからない。イライラ。３マス戻る");
+      bull.x -=96;
+      console.log(bull.x);  
+      let position = bull.x +'px';
+      $("#buffa").css("left",position);
     }
     if(bull.x == (32*15)+60){
-    alert("15升目");
+    alert("ハロウィーン準備で徹夜。１回休み");
     }
-    if(bull.x == (32*16)+60){
-    alert("16升目");
-    }
+    // if(bull.x == (32*16)+60){
+    //   alert("「横を見るな、縦を見ろ」とつぶやいて自分を鼓舞する。３マス進む");
+    //   bull.x +=96;
+    //   console.log(bull.x);  
+    //   let position = bull.x +'px';
+    //   $("#buffa").css("left",position);
+    // }
     if(bull.x == (32*17)+60){
-    alert("17升目");
+      alert("「横を見るな、縦を見ろ」とつぶやいて自分を鼓舞する。３マス進む");
+      bull.x +=96;
+      console.log(bull.x);  
+      let position = bull.x +'px';
+      $("#buffa").css("left",position);
     }
-    if(bull.x == (32*18)+60){
-    alert("18升目");
-    }
+    // if(bull.x == (32*18)+60){
+    //   alert("あと少し！");
+    
+      // 
     if(bull.x == (32*19)+60){
-    alert("19升目");
+      alert("バグの原因が見つからない。イライラ。３マス戻る");
+      bull.x -=96;
+      console.log(bull.x);  
+      let position = bull.x +'px';
+      $("#buffa").css("left",position);
     }
 }
 

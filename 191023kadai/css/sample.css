@@ -4,6 +4,7 @@ body{
     text-align:center;
     font-size: 24px;
 }
+
 header{
     background-color: #fff;
     border-bottom: 1px solid #ccc;
@@ -13,34 +14,53 @@ header{
     padding: 0;
     height: 50px;
 }
+
 main{
     border-bottom:1px solid #ccc;
 }
+
 footer{
     background-color: #fff;
     border-bottom:1px solid #ccc;
     text-align: center;
 }
+
 p{
     text-align: center;
     border-bottom:1px solid #fff;
 }
-ul{
-    padding: 0;
-    border-top: 1px solid #000000;
-    display:table;  /* 定義 */
-    table-layout: fixed;
-    width:100%;
+
+/* .janken_area{
+    display: flex;
+    margin: 0,atuo;
+} */
+
+.my_btn{
+    /* padding: 0;
+    border-top: 1px solid #000000; */
+    display:flex; 
+    justify-content: center; 
+    /* table-layout: fixed; */
+    /* width:100%; */
 }
-li{
-    text-align: center;
+
+.li_box{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(226, 210, 63);
+}
+
+.li_box img{
+    /* text-align: center;
     list-style-type:none;
     border: 1px solid #666;
     background-color: #FFF;
-    display:table-cell;  /* 定義 */
+    display:table-cell;  定義 */
+    width: 100%;
+    object-fit: cover;
     cursor: pointer;
 }
-li:hover{
+li_box:hover{
     background: #0066CC;
     color:#fff;
 }
