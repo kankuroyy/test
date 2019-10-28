@@ -1,0 +1,417 @@
+/* Basic Setting */
+body{
+    margin:0;
+    padding: 0;
+    font-family: 'Sawarabi Mincho', sans-serif;
+    text-align:left;
+    font-size: 18px;
+    width:100%;
+    color:rgb(44, 43, 43);
+    background:rgba(0,0,0,0.3);
+    z-index: 9;
+}
+
+.nav_container{
+    background: rgba(255,255,255,0.9);
+    width: 100%;
+    height: 70px;
+    z-index: 9999;
+    display: flex;
+    /* display: flex; */
+    /* position: absolute; */
+    position: fixed;
+    filter: drop-shadow(10px 5px 10px rgba(148, 147, 147, 0.6));
+    /* justify-content: space-between; */
+    /* width: 1366px; */
+}
+
+#logo{
+  height: 70px;
+  align-self: left;
+}
+
+#logo img{
+    height: 100%;
+}
+
+/* .marquee-list,.marquee-item{
+    border:none;
+}
+
+@keyframes animation-marquee {
+    0% { 
+      transform: translate(0%); 
+    }
+    100% { 
+      transform: translate(-100%); 
+    }
+  }
+  @mixin marquee {
+    animation-name: animation-marquee;
+    animation-duration: 50s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+  }
+#Display {
+    padding: 0 5px;
+    height: 80px;
+    line-height: 80px;
+    overflow: hidden;
+    position: relative;
+  }
+.marquee-list {
+    white-space: nowrap;
+    position: absolute;
+    @include marquee;
+        .marquee-item {
+        display: inline;
+        white-space: nowrap;
+        font-weight: bold;
+        font-size: 1.4em;
+        color: #68EF41;
+        padding: 0 60px 0 0;
+        &:first-child {
+            padding: 0 60px 0 100vw;
+ }
+}
+           */
+
+
+#contents_container{
+    max-width: 1366px;
+    height: 800px;
+    display: flex;
+    justify-content:space-between;
+}
+
+
+
+/* 付箋メモエリア */
+#editor{
+    padding-top: 100px;
+    width: 900px;
+    height: 800px;
+    background-image: url(/img/AdobeStock_223666324.jpeg);
+    object-fit: cover;
+}
+
+.sticky {
+    width: 400px;
+    position: absolute;
+    cursor: pointer;
+    font-family: 'Noto Serif JP', serif;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: rgb(122, 121, 121);
+}
+textarea {
+    font-family: 'Noto Serif JP', serif;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+}
+.selected {border:2px solid #ffd700}
+
+
+/* サイドエリア */
+#content_area{
+    background-color: #white;
+    padding-top: 80px;
+    margin-right: 50px;
+    width: 350px;
+}
+
+.words{
+    width: 400px;
+    height: 300px;
+    background-color: #fff;
+}
+
+#box_text1{
+    font: bold 40px/1.45 sans-serif;
+    writing-mode: vertical-rl;
+    margin-bottom: 30px;
+}
+
+#box_text1 > span {
+    position: relative;
+    display: table;
+}
+
+#box_text1 > span::before {
+    position: absolute;
+    background: rgb(92,27,25);
+    content: "";
+    width: 2px;
+    height: 0;
+    right: 0;
+    top: 0;
+    animation: line 2.1s linear forwards;
+}
+
+@keyframes line {
+    0% {height: 0}
+    100% {height: 100%}
+}
+
+#box_text1 > span:nth-child(2)::before {
+    animation-delay: 1.4s;
+}
+
+#box_text1 > span:nth-child(3)::before {
+    animation-delay: 2.8s;
+}
+
+#box_text1 > span > span {
+    opacity: 0;
+    animation: fade 1.7s .8s ease-out forwards;
+}
+
+@keyframes fade {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
+
+#box_text1 > span:first-child > span:nth-child(2) {
+    animation-delay: 1.5s;
+}
+
+#box_text1 > span:nth-child(2) > span:first-child {
+    animation-delay: 1.9s;
+}
+
+#box_text1 > span:nth-child(3) > span:first-child {
+    animation-delay: 2.5s;
+}
+
+#box_text1 > span:nth-child(3) > span:nth-child(2) {
+    animation-delay: 3.3s;
+}
+
+@-webkit-keyframes typing {
+from { width: 0 }
+to { width:14em }
+}
+
+@-moz-keyframes typing {
+    from { width: 0 }
+    to { width:14em }
+}
+
+@-webkit-keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: black }
+}
+
+@-moz-keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: black }
+}
+
+#box_text2{
+    font-size:150%;
+    width:14em;
+    white-space:nowrap;
+    overflow:hidden;
+    border-right: .1em solid black;
+    
+    -webkit-animation: typing 3s steps(14, end), /* # of steps = # of characters */
+                        blink-caret 1s step-end infinite;
+    -moz-animation: typing 3s steps(14, end), /* # of steps = # of characters */
+                        blink-caret 1s step-end infinite;
+}
+
+
+#output_box{
+    width: 350px;
+    height: 300x;
+}
+
+#input_area{
+    width: 350px;
+
+}
+
+header{
+    /* background-color: #fff; */
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+h1{
+    font-size: 100%;
+}
+main{
+    width:100%;
+    display: block;
+    border-bottom:1px solid #ccc;
+    position:relative;
+}
+footer{
+    background-color: #fff;
+    border-bottom:1px solid #ccc;
+    text-align: center;
+    width: 100%;
+}
+
+#footer{
+    font-size: 15px;
+}
+
+p{
+    text-align: center;
+    border-bottom:1px solid #fff;
+}
+
+/* =02 Regist Form */
+ul{
+    padding: 0;
+    border-top: 1px solid #000000;
+    display:table;  /* 定義 */
+    table-layout: fixed;
+    width:96%;
+    font-size: 80%;
+    margin: 0 3%;
+    text-align: center;
+}
+li{
+    list-style-type:none;
+    border: 1px solid #666;
+    background-color: #fff;
+    display:table-cell;  /* 定義 */
+    cursor: pointer;
+    color:#0d7dfd;
+}
+li:hover{
+    background: #0d7dfd;
+    color:#fff;
+}
+
+form textarea{
+  margin: 10px 3%;
+  width: 95%;
+  height: 100px;
+  font-size:80%;
+  box-shadow: 0 1px 3px 0px #555;
+  background-color:rgb(241, 239, 239);
+  border:none;
+}
+
+#name,#category{
+    margin:0 3%;
+    width: 95%;
+    height: 30px;
+    font-size:80%;
+    background-color: #e1efff;
+    box-shadow: 0 1px 3px 0px #555;
+    border:none;
+}
+
+
+#insert{
+    height: 200px;
+    object-fit: cover;
+}
+
+
+/* 03 Table */
+table{
+    margin: 20px 3%;
+    /* border:1px solid #8dc3f5; */
+    width:96%;    
+    text-align-last: left;
+    font-family: 'Sawarabi Mincho', sans-serif;
+}
+
+table caption{
+    font-weight: bold;
+    text-align-last: left;
+}
+
+table thead{
+    border-bottom: 3px solid #09c;
+}
+
+table thead th{
+    text-align-last: left;
+}
+
+table tbody tr td{
+    padding: 10px;
+}
+    table tbody tr:nth-child(even){
+        background: #DDD;
+    }
+    table tbodytr:nth-child(odd){
+        background-color: #fff;
+    }
+    table tbody tr:hover{
+        background: #09c;
+        border-radius: 4px;
+    }
+
+    table tbody tr:hover td{
+        color: #fff;
+    }
+
+    table tbody tr .delete{
+        visibility: hidden;    
+    }
+        table tbody tr:hover .delete{
+            visibility: visible;
+        }
+
+/* =04 Button */
+button{
+    color: #6E6E6E;
+    font: bold 12px Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    padding: 4px 18px;
+    display: inline-block;
+    text-shadow: 0 1px 0 white;
+
+}
+
+td{
+    font-size:16px;
+    background-color:rgb(241, 239, 239);
+    border-bottom: 1px solid #8dc3f5;
+    -webkit-transition: border-color .218s;
+    -moz-transition: border .218s;
+    -o-transition: border-color .218s;
+    transition: border-color .218s;
+    background: #F3F3F3;
+    background: -webkit-gradient(linear,0% 40%,0% 70%,from(whiteSmoke),to(#F1F1F1));
+    background: -moz-linear-gradient(linear,0% 40%,0% 70%,from(whiteSmoke),to(#F1F1F1));
+    border: solid 1px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    margin-right: 10px;
+    border-image: initial;
+}
+    button:hover {
+        color: #333;
+        border-color: #999;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    }
+
+    button:active {
+        color: #000;
+        border-color: #444;
+    }
+
+    button.delete {
+        color: #fff;
+        text-shadow: 0 -1px 0 #333;
+        padding: 4px;
+        border-radius: 12px;
+        -webkit-border-radius: 12px;
+        -moz-border-radius: 12px;
+        background: #E75D59;
+        background: -webkit-gradient(linear,0% 40%,0% 70%,from(#E75D59),to(#990000));
+        background: -moz-linear-gradient(linear,0% 40%,0% 70%,from(#E75D59),to(#E6584C));
+       
+      }
+
