@@ -56,21 +56,23 @@ $(function() {
     load();
   });
 
-// サブエリア
-let content = 0;
-$(function(){
-    for(let key in localStorage){
-        if(localStorage.hasOwnProperty(key)){
-        // console.log(localStorage[key]);
-        let content = localStorage[key];
-        let rNo = Math.floor(Math.random()*key.length) +1;
-        }
-    }
+// // サブエリア
+// let content = 0;
+// $(function(){
+//     for(let key in localStorage){
+//         let arry = localStorage.getItem(key);
+//         console.log(arry);
+//         let arry = localStorage.getItem(key);
+//         let content = JSON.parse(arry);
+//         console.log(content);
+//         let rNo = Math.floor(Math.random()*arry.length) +1;
+//         }
+//     }
 
-    console.log(content);
+//     console.log(content);
     
     
-    })
+//     })
 
 
 // 名言登録エリア

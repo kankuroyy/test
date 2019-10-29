@@ -34,6 +34,15 @@ body{
     height: 100%;
 }
 
+#Title{
+    vertical-align: center;
+}
+
+#Title img{
+    height: 90%;
+    background: linear-gradient(transparent 0%, #ffff66 0%);
+}
+
 /* .marquee-list,.marquee-item{
     border:none;
 }
@@ -132,7 +141,7 @@ textarea {
 #box_text1{
     font: bold 40px/1.45 sans-serif;
     writing-mode: vertical-rl;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 #box_text1 > span {
