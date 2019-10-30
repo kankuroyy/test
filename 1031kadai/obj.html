@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+<script>
+const ob1 = {
+    name: "山崎",
+    email: "test@test.jp",
+    adress: "tokyo/Jp"
+    };
+// 改行を入れる。一つの塊として情報を持ちやすい。繰り返しの処理もしやすい
+// どうやって表示するか
+console.dir(ob1);
+localStorage.setItem("ob",j);
+const j = JSON.stringify(ob1);
+console.log(j);
+const ob2 = JSON.parse(j);
+console.log(ob2);
+
+const ob2 = JSON.parse("ob");
+const g = localStorage.getItem(g);
+console.log(ob2);
+
+
+</script>
+
+</body>
+</html>

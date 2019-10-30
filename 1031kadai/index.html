@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ONE Team</title>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar is-gray topNav">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="#">
+                    <img src="imgs/1_Primary_logo_on_transparent_182x71.png" height="150">
+                </a>
+            </div>
+            <div class="navbar-item">
+                    <input class="input" type="search" placeholder="Search forum...">
+            </div>
+        </nav>
+    </div>
+
+    <div class="input_area">
+        <button id="btn" class="button is-medium">音声入力開始</button>
+        
+        <div>
+            <input type="text" class="input is-small" id="username"placeholder="User name">
+        </div>
+
+        <div id="location_comment">コメントの場所はこちらです</div>
+
+        <div>
+            <div class="field">
+                <div class="control">
+                    <textarea id="text" class="textarea is-info" cols="50" placeholder="報告事項"></textarea>
+                </div>
+            </div>
+
+            <div class="file">
+                    <label class="file-label">
+                    <input class="file-input" type="file" name="resume">
+                    <span class="file-cta">
+                        <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                        ファイル選択
+                        </span>
+                    </span>
+                    </label>
+                </div>
+
+            <button id="send" class="button is-medium">送信</button>
+        </div>
+    </div>
+ 
+    <div id="output"></div>
+    
+    <div class=location>
+        <div id="result"></div>
+        <p><button onclick="getMyPlace()" class="button is-medium">現在位置を取得</button></p>
+        <div id="map" style="width:80%;height:300px;"></div>
+    </div>
+
+    
+ 
+
+    <style>
+
+        .input_area,#output,.location{
+            margin: 30px 100px;
+        }
+
+        .name{
+            font-size: 10px;
+        }
+        .text{
+            font-size: 16px;
+            }
+        .msg_main{
+            display: flex;
+            padding: 0 0 0 5px;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .msg_left{
+            display: flex;
+            align-items: center;
+        }
+        .msg_right{
+            display: flex;
+            margin: 0 15px 0 0;
+        }
+        .icon{
+            border-radius: 50%;
+        }
+        .name{
+            font-size: 12px;
+            opacity: 0.4;
+        }
+        .msg{
+            padding: 0 5px;
+        }
+        .time{
+            font-size: 10px;
+            margin: 10px 0 0 0;
+        }
+        .text{
+            font-size: 16px;
+            font-weight: lighter;
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+
+        #map {
+            width: 700px;
+            height: 500px;
+            background-color: gray;
+        }
+
+        #output{
+            width: 500px;
+        }
+
+    </style>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase.js"></script>
+<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+<script src="script.js"></script>
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyDFnsJej3jw3-ZoIgJA0liVVMZ_xzZmNq8&language=ja"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+
+</body>
+</html>
+
