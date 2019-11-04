@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+</head>
+<body>
+<div id="firebaseui-auth-container"></div>
+<div id="loader">Loading...</div>
+
+<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase.js"></script>
+<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script>
+    let config = {
+        apiKey: "AIzaSyDHCI9HelAf6SLGaO8BCrm4f20TvFeyhl",
+        authDomain: "labs23-dca28.firebaseapp.com",
+        databaseURL: "https://labs23-dca28.firebaseio.com",
+        projectId: "labs23-dca28",
+        storageBucket: "labs23-dca28.appspot.com",
+        messagingSenderId: "830384947924",
+        appId: "1:830384947924:web:4c102d6d780cc0bc043141"
+    };        
+    firebase.initializeApp(config);
+</script>
+
+<script type="text/javascript">
+    let ui = new firebaseui.auth.AuthUI(firebase.auth());
+    let uiConfig = {
+        callbacks: {
+            signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+                return true;
+            },
+            uiShown: function() {
+                document.getElementById('loader').style.display = 'none';
+            }
+        },
+        signInFlow: 'popup',
+        signInSuccessUrl: './main.html',
+        signInOptions: [
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            // firebase.auth.EmailAuthProvider.PROVIDER_ID,
+        ],
+    };
+    ui.start('#firebaseui-auth-container', uiConfig);
+</script>
+</body>
+</html>

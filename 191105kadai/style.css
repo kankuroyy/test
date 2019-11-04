@@ -1,0 +1,58 @@
+/* chatarea */
+.name {
+  font-size: 10px;
+}
+
+.text {
+  font-size: 16px;
+}
+
+.msg_main {
+  display: flex;
+  padding: 0 0 0 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.msg_left {
+  display: flex;
+  align-items: center;
+}
+
+.msg_right {
+  display: flex;
+  margin: 0 15px 0 0;
+}
+
+.icon {
+  border-radius: 50%;
+}
+
+.name {
+  font-size: 12px;
+  opacity: 0.4;
+}
+
+.msg {
+  padding: 0 5px 0 5px;
+}
+
+.time {
+  font-size: 10px;
+  margin: 10px 0 0 0;
+}
+
+.text {
+  font-size: 16px;
+  font-weight: lighter;
+  border-radius: 10px;
+  padding: 5px 5px 5px 5px;
+}
+
+
+#output {
+  width: 300px;
+  /* 追記 */
+  height: 400px;
+  overflow:auto;
+}

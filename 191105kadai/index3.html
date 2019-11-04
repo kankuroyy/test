@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- タブサイズ以上で表示を追加 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="/base.css">
+    <title>ONE Team</title>
+</head>
+
+<body>
+    <!-- １）ヘッダ（ロゴ、メニュー） -->
+    <!-- navbarで囲むコンポーネント -->
+    <header class="nav">
+        <div class="nav-left">
+            <div class="nav-item">
+                <a class="nav-logo" href="#">
+                    <img src="imgs/1_Primary_logo_on_transparent_182x71.png" height="150">
+                </a>
+            </div>
+            <div class="nav-item2" style="width: 150px">
+                <input id="serch" class="input" type="search" placeholder="Search form...">
+            </div>
+        </div>
+        <section class="level">
+            <div class="level-left">
+            </div>
+            <div class="level-right">
+            <div class="level-item tabs">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            </div>
+        </section>
+    </header>
+
+    <!-- 2)メーンコンテンツ -->
+    <main >
+
+        <!-- １・地図エリア -->
+        <div class="columns">
+            <div class="column is-12">
+                <div class=location>
+                    <div id="result"></div>
+                        <p><button onclick="getMyPlace()" class="button is-medium">現在位置を取得</button></p>
+                    <div id="map" style="height:300px;"></div>
+                </div>
+            </div>
+        </div>
+        <!-- ２・チャットエリア -->
+        <div class="columns">
+            <div class="column is-8">
+                <div id="output"></div>
+            </div>
+            <div class="column is-4">
+                <div id=""></div>
+            </div>
+        </div>
+        <!-- ３・入力、操作エリア -->
+        <div class="columns">
+            <div class="input_area">
+                <button id="btn" class="button is-medium">音声入力開始</button>
+                
+                <div>
+                    <input type="text" class="input is-small" id="username"placeholder="User name">
+                </div>
+
+                <div id="location_comment">コメントの場所はこちらです</div>
+
+                <div>
+                    <div class="field">
+                        <div class="control">
+                            <textarea id="text" class="textarea is-info" cols="50" placeholder="報告事項"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="file">
+                            <label class="file-label">
+                            <input class="file-input" type="file" name="resume">
+                            <span class="file-cta">
+                                <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                                </span>
+                                <span class="file-label">
+                                ファイル選択
+                                </span>
+                            </span>
+                            </label>
+                        </div>
+
+                    <button id="send" class="button is-medium">送信</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!--  フッター -->
+    <footer class="footer">
+            <div class="container">
+                <div class="content has-text-centered">
+                <i class="far fa-copyright"></i> Copyright 2019 Re-media
+                </div>
+            </div>
+    </footer>
+    
+ 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase.js"></script>
+<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+<script type="text/javascript" src="//cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
+<script src="script2.js"></script>
+<script type="text/javascript" src="video_chat.js"></script>
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyDFnsJej3jw3-ZoIgJA0liVVMZ_xzZmNq8&language=ja"></script>
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+
+</body>
+</html>
+
