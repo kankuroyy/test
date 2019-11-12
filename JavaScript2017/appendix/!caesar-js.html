@@ -1,0 +1,34 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8">
+  <style> textarea { background-color: #f0ffff; } </style>
+</head><body>
+  <h1>シーザー暗号でJavaScriptを難読化</h1>
+  <textarea id="src" rows="4" cols="80">alert("Hello!");</textarea><br>
+  <button onclick="encrypt()">[↓] 難読化</button><br>
+  <textarea id="des" rows="4" cols="80"></textarea><br>
+  <button onclick="run()">実行</button><br>
+<script type="text/javascript">
+function encrypt() {
+  // ソースコードを暗号化
+  var src = convertCaesar($("src").value, 10);
+  src = encodeURIComponent(src);
+  // 暗号を復号化して実行するコードと組み合わせる
+  $("des").value = "(function(n){" +
+    "var c=decodeURIComponent('"+src+"');"+
+    "var r='';for(var i=0;i<c.length;i++){"+
+      "var e=(c.charCodeAt(i)+256-n)%256;"+
+      "r+=String.fromCharCode(e)"+
+    "};eval(r);})(10);";
+}
+// シーザー暗号を行う関数
+function convertCaesar(s, shift) {
+  var r = ""; for (var i = 0; i < s.length; i++) {
+    var c = s.charCodeAt(i);
+    if (c < 0) c += 256;
+    c = (c + shift) % 256;
+    r += String.fromCharCode(c);
+  }
+  return r;
+}
+function $(id) { return document.getElementById(id); }
+function run() { eval($("des").value); }
+</script></body></html>

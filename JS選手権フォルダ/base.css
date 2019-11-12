@@ -1,0 +1,66 @@
+/* .input_area,#output,.location{
+    margin: 5px 100px;
+} */
+
+.input_area{
+    margin: 5px 50px;
+}
+
+.name{
+    font-size: 10px;
+}
+.text{
+    font-size: 16px;
+    }
+.msg_main{
+    display: flex;
+    padding: 0 0 0 5px;
+    justify-content: space-between;
+    align-items: center;
+}
+.msg_left{
+    display: flex;
+    align-items: center;
+}
+.msg_right{
+    display: flex;
+    margin: 0 15px 0 0;
+}
+.icon{
+    border-radius: 50%;
+}
+.name{
+    font-size: 12px;
+    opacity: 0.4;
+}
+.msg{
+    padding: 0 5px;
+}
+.time{
+    font-size: 10px;
+    margin: 10px 0 0 0;
+}
+.text{
+    font-size: 16px;
+    font-weight: lighter;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+
+#map {
+    width: 700px;
+    height: 500px;
+    background-color: gray;
+}
+
+#output{
+    width: 500px;
+}
+
+
+
+/* モバイルで表示させたくない部分 */
+/* +++++ {
+    display: none;
+ } */

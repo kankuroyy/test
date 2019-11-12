@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+
+<!-- TODO(1/2) Firebase ここから書き換え -->
+<!-- firebaseで取得したコード -->
+<!-- ここまで書き換え -->
+
+<!-- TODO(2/2) Google Maps - APIのキーを書き換え -->
+<script src="https://maps.googleapis.com/maps/api/js?key=★★★&callback=initMap" async defer></script>
+<!-- ここまで書き換え -->
+
+<title>位置情報共有</title>
+<script>
+// データベースの参照を得る
+var db = firebase.database();
+var user_db = db.ref("/users");
+var map = null;
+var watchID;
+var users = {};
+
+// Google Mapsの初期化
+function initMap() {
+  map = new google.maps.Map($('map'), {
+    center: {"lat":35.65862127808128, "lng":139.74542051553726},
+    scrollwheel: false,
+    zoom: 12 
+  });
+  // ログインボタンのイベント
+  $("login_btn").onclick = login_btn_onclick;
+  // ユーザー認証イベントの設定
+  firebase.auth().onAuthStateChanged(authStateChange);
+}
+// ログインボタンを押した時
+function login_btn_onclick() {
+  var cur = firebase.auth().currentUser;
+  if (!cur) {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider);
+  } else {
+    firebase.auth().signOut();
+  }
+}
+// 認証状態が変化したとき
+function authStateChange(user) {
+  if (user) { //ログインした
+    $("login_btn").innerHTML = 
+      user.displayName + "のログアウト";
+    setEvent();
+  } else { // ログアウトした
+    $("login_btn").innerHTML = "ログイン";
+  }
+}
+// イベントの設定
+function setEvent() {
+  // 追加されたとき
+  user_db.limitToLast(20).on("child_added", checkValue);
+  // 変更があったとき
+  user_db.limitToLast(20).on("child_changed", checkValue);
+  // 位置情報を監視する
+  if (!"geolocation" in navigator) {
+    alert("位置情報を利用できません。");
+  } else {
+    watchID = navigator.geolocation.watchPosition(updatePosition);
+  }
+}
+// 位置情報を取得できたとき
+function updatePosition(p) {
+  var lat = p.coords.latitude;
+  var lng = p.coords.longitude;
+  var user = firebase.auth().currentUser;
+  if (!user) return;
+  // データベースに値を記録する
+  user_db.child(user.uid).set({
+    username: user.displayName || '',
+    photo: user.photoURL || '',
+    latitude: lat || 0,
+    longitude: lng || 0,
+    timestamp: (new Date()).getTime()
+  });
+  if (map == null) return;
+  // 自分のいる位置を中心にする
+  map.setCenter({"lat":lat, "lng":lng});
+  console.log("map=", lat, lng);
+}
+// データベースの値に応じて地図上にマークをつける
+function checkValue(data) {
+  v = data.val();
+  var lat = v.latitude;
+  var lng = v.longitude;
+  var key = data.key;
+  var photo = v.photo || '';
+  var bar = '<img width=30 height=30 src="' + photo + '">' +
+    ' ' + v.username;
+  if (map == null) return;
+  // 地図上にマークをつける
+  if (!(key in users)) {
+    var marker = new google.maps.Marker({
+      position: {"lat": lat, "lng": lng},
+      draggable: true
+      });
+    var info = new google.maps.InfoWindow({
+      content: bar});
+    marker.setMap(map);
+    marker.addListener('click', function() {
+      info.open(map, marker);
+    });
+    users[key] = {
+      "marker": marker,
+      "info": info
+    };
+  }
+  else { 
+    var marker = users[key].marker;
+    marker.setPosition({"lat":lat, "lng":lng});
+  }
+}
+function $(id) { return document.getElementById(id); }
+</script>
+</head><body>
+<div style="text-align:right">
+  <button id="login_btn">ログイン</button>
+</div>
+<div id="map" style="height:500px; width:100%;"></div>
+<div><ul id="userlist"></ul></div>
+</body></html>
+

@@ -1,0 +1,130 @@
+/* font-family: 'M PLUS 1p', sans-serif;
+font-family: 'Noto Sans JP', sans-serif; */
+p{
+margin:0;
+}
+.container {
+    padding: 0.2rem;
+    }
+    
+    .tab-list {
+    border-top: 1px solid #dedede;
+    display: flex;
+    list-style: none;
+    margin: 0.5rem 0 0 0;
+    padding: 0;
+    background-color: 
+    }
+    
+    .tab-item {
+    border: 1px solid transparent;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    cursor: pointer;
+    /* 親要素の下ボーダーが見えなくなるように 1px 下にずらす */
+    margin-top: -1px;
+    padding-left: 1rem;
+    font-family: 'Noto Sans JP', sans-serif;
+    object-fit: contain;
+    }
+
+    /* .tab-item.img{
+        width: 100%;
+    } */
+    
+    .tab-item.is-open {
+    border-color: #dedede;
+    border-top-color: #fff;
+    color: #fc5185;
+    font-weight:bold;
+    }
+    
+    .tab-item a {
+    color: inherit;
+    text-decoration: none;
+    }
+    
+    .tab-content {
+    display: none;
+    }
+    
+    .tab-content.is-open {
+    display: block;
+    }
+
+.logo_container{
+    height: 40px;
+    display: flex;
+    justify-content: center;
+}
+.logo_container.img{
+    height: 100%;
+    width: auto;
+}
+
+
+/* チャット */
+.name {
+    font-size: 10px;
+  }
+  
+  .msg_main {
+    display: flex;
+    padding: 0 0 0 5px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .msg_left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .msg_right {
+    display: flex;
+    margin: 0 15px 0 0;
+  }
+  
+  .icon {
+    border-radius: 50%;
+  }
+  
+  .name {
+    font-size: 12px;
+    opacity: 0.4;
+  }
+  
+  .msg {
+    padding: 0 5px 0 5px;
+  }
+  
+  .time {
+    font-size: 10px;
+    margin: 10px 0 0 0;
+  }
+  
+  .text_chat {
+    font-size: 16px;
+    font-weight: lighter;
+    border-radius: 10px;
+    padding: 5px 5px 5px 5px;
+  }
+  
+  
+  #output_chat {
+    width: 300px;
+    /* 追記 */
+    height: 400px;
+    overflow:auto;
+  }
+
+
+/* 取材メモ */
+.form_wrap{
+    display: flex;
+    justify-content: center;
+}
+
+canvas, video{
+    border: 1px solid gray;
+  }

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|Noto+Sans+JP:400,700&display=swap" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="/kadai.css">
+    <link rel="stylesheet" href="/video-chat.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrapper">
+        <!--ヘッダー -------------------------------------------------------------------------------------------->
+        <section id="header">
+            <header class="container mx-auto">
+                <nav class="navbar" role="navigation" aria-label="main navigation">
+                    <div class="navbar-brand">
+                        <img src="./imgs/2_Flat_logo_on_transparent_182x71.png">
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                          </a>
+                    </div>
+                </nav>
+            </header>
+        </section>
+        <!-- メイン-------------------------------------------------------------------------------------------->
+        <section id="main_content">
+            <!-- コンテンツエリア-->
+            <div class="container">        
+                <div class="tabControl" id="tabControl"></div>
+                <div class="tabControl-data" id="tabControl-data"></div>                
+                    <!-- タブ１・地図と報告 -------------------------------------------------------------------------------------------->
+                    <div class="tab-content is-open" id="Now">
+                        <div class="column is-12">
+                            <div class=location>
+                                
+                                <p>
+                                    <button onclick="getMyPlace()" class="button is-small">現在位置を取得</button>
+                                    <button id="watchButton" class="button is-small">位置追跡オン</button>
+                                </p>
+                                <div id="map" style="height:300px;"></div>
+                                <div id="result"></div>
+                            </div>
+                        </div>                 
+                        <!-- （入力部分） -->
+                        <div class="input_area">
+                            <button id="btn" class="button is-small">音声入力開始</button>
+                            <button id="send" class="button is-small">送信</button>                            
+                            <div>
+                                <input type="text" class="input is-small" id="username"placeholder="名前を記入">
+                            </div>          
+                            <div>
+                                <div class="field">
+                                    <div class="control">
+                                        <textarea id="text" class="textarea is-info" cols="50" placeholder="報告事項"></textarea>
+                                    </div>
+                                </div>                               
+                            </div>
+                        </div>  
+                    </div>
+                    <!-- タブ２・チャット -------------------------------------------------------------------------------------------->
+                    <div class="tab-content" id="Chat">
+                        <div class="columns">
+                            <div class="column is-8">
+                                <div id="output"></div>
+                            </div>
+                            <div class="column is-4">
+                                <div id=""></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- タブ３・取材メモ -------------------------------------------------------------------------------------------->
+                    <div class="tab-content" id="Memo">
+                        <div class="memo_input">
+                            <input type="text"  id="Memo_title">
+                            <input type="file" id="setFile">
+                            <input type="submit" value="アップロードする">
+                        </div>                  
+                    </div>    
+                    <!-- タブ４・ウェブ会議 -------------------------------------------------------------------------------------------->
+                    <div class="tab-content" id="WebChat">
+                        <div class="pure-u-2-3" id="video-container">
+                            <div id="their-videos"></div>
+                                <video id="my-video" muted="true" autoplay playsinline></video>
+                            </div>                       
+                            <!-- Steps -->
+                            <div class="pure-u-1-3">
+                                <h2>オンライン会議</h2>                        
+                                <div class="select">
+                                    <label for="audioSource">Audio input source: </label><select id="audioSource"></select>
+                                </div>
+                                <div class="select">
+                                    <label for="videoSource">Video source: </label><select id="videoSource"></select>
+                                </div>                        
+                            <!-- Get local audio/video stream -->
+                            <div id="step1">
+                                <p>Please click `allow` on the top of the screen so we can access your webcam and microphone for calls.</p>
+                                <div id="step1-error">
+                                <p>Failed to access the webcam and microphone. Make sure to run this demo on an http server and click allow when asked for permission by the browser.</p>
+                                <a href="#" class="pure-button pure-button-error" id="step1-retry">Try again</a>
+                                </div>
+                            </div>                   
+                            <p>Your id: <span id="my-id">...</span></p>
+                            <!-- Make calls to others -->
+                            <div id="step2">
+                                <h3>Make a call</h3>
+                                <form id="make-call" class="pure-form">
+                                <input type="text" placeholder="Username" id="username"><br>
+                                <input type="text" placeholder="Join room..." id="join-room">
+                                <button  id="join" class="pure-button pure-button-success" type="submit">Join</button>
+                                </form>
+                                <p><strong>注意：</strong>同じルーム名を使用した場合、知らない人と接続する可能性があります。</p>                               
+                            </div>                       
+                            <!-- Call in progress -->
+                            <div id="step3">
+                                <p>Currently in room <span id="room-id">...</span></p>
+                                <p><a href="#" class="pure-button pure-button-error" id="end-call">End call</a></p>
+                                <div id="output"></div>
+                            </div>
+                            </div>
+                        </div>                            
+                    </div>
+                    <!-- タブ５・周辺情報 -------------------------------------------------------------------------------------------->
+                    <div class="tab-content" id="Around">
+                        <p>わん<br />わん<br />わん</p>
+                    </div>
+                    <!-- タブメニュー（画面下部） -------------------------------------------------------------------------------------------->
+                    <ul class="tab-list" id="tab-1">
+                        <li class="tab-item is-open">
+                                <a href="#Now" data-toggle>
+                                    <span>現状報告</span>
+                                    <img src="./imgs/f_f_traffic_45_s64_f_traffic_45_0bg.png" id="hokoku_icon">
+                                </a>
+                        </li>
+                        <li class="tab-item">
+                            <a href="#Chat" data-toggle>
+                                <span>チャット</span>
+                                <img src="./imgs/f_f_business_43_s64_f_business_43_2bg.png" id="chat_icon">
+                            </a>
+                        </li>
+                        <li class="tab-item">
+                            <a href="#Memo" data-toggle>
+                                <span>取材メモ</span>
+                                <img src="./imgs/f_f_business_1_s64_f_business_1_0.png" id="memo_icon">
+                            </a>
+                        </li>
+                        <li class="tab-item">
+                            <a href="#WebChat" data-toggle>
+                                <span>web会議</span>
+                                <img src="./imgs/f_f_event_45_s64_f_event_45_0bg.png" id="onlinechat_icon">
+                            </a>
+                        </li>
+                        <li class="tab-item">
+                            <a href="#Around" data-toggle>
+                                <span>周辺情報</span>
+                                <img src="./imgs/f_f_object_25_s64_f_object_25_0bg.png" id="info_icon">
+                            </a>
+                        </li>
+                    </ul>           
+                </div>
+            </div>
+        </section>
+    </div>
+        
+    <style>
+        .container {
+            padding: 0.2rem;
+            }
+            
+            .tab-list {
+            border-top: 1px solid #dedede;
+            display: flex;
+            list-style: none;
+            margin: 0.5rem 0 0 0;
+            padding: 0;
+            background-color: 
+            }
+            
+            .tab-item {
+            border: 1px solid transparent;
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+            cursor: pointer;
+            /* 親要素の下ボーダーが見えなくなるように 1px 下にずらす */
+            margin-top: -1px;
+            padding-left: 1rem;
+            font-family: 'Noto Sans JP', sans-serif;
+            object-fit: contain;
+            }
+
+            /* .tab-item.img{
+                width: 100%;
+            } */
+            
+            .tab-item.is-open {
+            border-color: #dedede;
+            border-top-color: #fff;
+            color: #fc5185;
+            font-weight:bold;
+            }
+            
+            .tab-item a {
+            color: inherit;
+            text-decoration: none;
+            }
+            
+            .tab-content {
+            display: none;
+            }
+            
+            .tab-content.is-open {
+            display: block;
+            }
+        </style>
+        
+        <script>
+
+        onload="initTabControl('tabControl', 'tabControl-data')"
+
+        document.addEventListener('DOMContentLoaded', () => {
+          const tab = document.getElementById('tab-1');
+          new Tab(tab);
+        });
+        
+        /**
+         * タブ
+         * @property {NodeList} toggles タブ要素
+         */
+        function Tab(tab) {
+          this.toggles = tab.querySelectorAll('[data-toggle]');
+          
+          this.handleClick();
+        }
+        
+        /**
+         * タブをクリックした時の動作
+         */
+        Tab.prototype.handleClick = function() {
+          this.toggles.forEach(toggle => {
+            toggle.addEventListener('click', event => {
+              event.preventDefault();
+              // 先にすべて閉じておく
+              this.closeAll();
+              // リンクの親要素に開いた表現のクラスを追加
+              toggle.parentNode.classList.add('is-open');
+              // クリックされたタブに対応するコンテンツを表示
+              const target = toggle.getAttribute('href');
+              const content = document.querySelector(target);
+              content.classList.add('is-open');
+            });
+          });
+        };
+        
+        /**
+         * タブをすべて閉じる
+         */
+        Tab.prototype.closeAll = function() {
+          this.toggles.forEach(toggle => {
+            toggle.parentNode.classList.remove('is-open');
+            const target = toggle.getAttribute('href');
+            const content = document.querySelector(target);
+            content.classList.remove('is-open');
+          });
+        };
+
+</script>
+
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyDFnsJej3jw3-ZoIgJA0liVVMZ_xzZmNq8&language=ja"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>  
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
+<script type="text/javascript" src="//cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
+<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+<script src="./main.js"></script>
+</body>
+</html>

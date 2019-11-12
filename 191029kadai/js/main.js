@@ -59,14 +59,14 @@ $(function() {
 // // サブエリア
 // let content = 0;
 // $(function(){
-    for(let key in localStorage){
-        let arry = localStorage.getItem(key);
-        console.log(arry);
-        let arry = localStorage.getItem(key);
-        let content = JSON.parse(arry);
-        console.log(content);
-        let rNo = Math.floor(Math.random()*arry.length) +1;
-        }
+    // for(let key in localStorage){
+    //     let arry = localStorage.getItem(key);
+    //     console.log(arry);
+    //     let arry = localStorage.getItem(key);
+    //     let content = JSON.parse(arry);
+    //     console.log(content);
+    //     let rNo = Math.floor(Math.random()*arry.length) +1;
+    //     }
     // }
 
 //     console.log(content);

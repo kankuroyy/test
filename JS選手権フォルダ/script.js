@@ -10,17 +10,12 @@ let config = {
 firebase.initializeApp(config);
 
 const newPostRef = firebase.database().ref();
-
 const send = document.getElementById("send");
 const username = document.getElementById("username");
 const text = document.getElementById("text");
-let map,latitude,longitude,marker,infowindow;
-let latlang,lat,lng,Location; 
-let result = document.getElementById("result");
 // const latitude = document.getElementById("latitude");
 // const longitude = document.getElementById("longitude");
 
-// const messagesRef = firebase.database().ref().child('messages');
 
 // function initMap(){
 //     const defaultSettings = {zoom: 15, center:{lat: 35.6811673, lng:139.7670516}};
@@ -62,14 +57,6 @@ function getMyPlace() {
             presentLocation = [e.latLng.lat(),e.latLng.lng()];
             console.log(presentLocation);
             // $("#location_comment").html("presentLocation");
-
-            infoWindow = new google.maps.InfoWindow({
-                content: '<div><input name="textBox1" id="id_textBox1" type="text" value=""/>メモ欄</div>'
-            });
-            marker.addListener('click', function() { // マーカーをクリックしたとき
-                infoWindow.open(map, marker); // 吹き出しの表示
-            });
-
         return presentLocation;
         });
     };
@@ -77,18 +64,6 @@ function getMyPlace() {
         output.innerHTML = "座標位置を取得できません";
     };
     navigator.geolocation.getCurrentPosition(success, error);
-}
-
-function MarkerLocation() {
-    let pos = marker.getPosition() ;
-    let lat = pos.lat();
-    let lng = pos.lng();
-    alert(pos);
-    // alert("緯度："+lat+"、経度："+lng);
-    $("#location_comment").html("【コメント位置】緯度："+lat+"、経度："+lng);
-
-    let Location = pos.toJSON();
-    return Location;
 }
 
 function time() {
@@ -100,17 +75,11 @@ function time() {
     return time;
 } 
 
-// function memo(){
-//     let memo = document.getElementById("#id_textBox1");
-// };
-
 $("#send").on("click", function(){
     newPostRef.push({
         username: $("#username").val(),
         text: $("#text").val(),
-        time: time(),
-        Location: MarkerLocation(),
-        // memo; memo()
+        time: time()
     });
     $("#text").val("");
 });
@@ -135,33 +104,7 @@ newPostRef.on('child_added', function(data){
     str += '</div>';
 
     output.innerHTML += str;
-    console.log(v.Location);
-    
-    let marker = new google.maps.Marker({ // マーカーの追加
-        position: v.Location, // マーカーを立てる位置を指定
-        map: map // マーカーを立てる地図を指定
-    });    
 });
-    // let kMarker = new google.maps.Marker({
-    //             // マーカーを置く緯度経度
-    //     position: v.Location,
-    //     map: map,
-    //     });
-
-    // let jsObject = JSON.parse(a);
-    // let latitude = jsObject.lat;
-    // let longitude = jsObject.lng;
-    // console.log(a);
-    // console.log(latitude);
-
-    // let latitude  = v.Location[0];
-    // let longitude = v.Location[1];
-    // let latlng = new google.maps.LatLng( latitude , longitude);
-    // let kMarker = new google.maps.Marker({
-    //         // マーカーを置く緯度経度
-    //     position: latlng,
-    //     map: map,
-    //     });
 
 
 
@@ -244,3 +187,4 @@ speech.onend = () => {
 //     console.log(e);
 //     const text = e.results[0][0].transcript;
 //     content.innerText = text;
+// });

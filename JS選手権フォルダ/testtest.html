@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    5分間隔で雨雲が更新されます。
+    <div id="map" style="width:400px; height:250px;"></div>
+
+<script>
+window.onload = function() {
+   var map = new Y.Map("map", {
+   configure : {
+       doubleClickZoom : true,
+       scrollWheelZoom : true,
+       dragging : true
+       }
+   });
+   //天気レイヤ作成
+   var weather = new Y.WeatherMapLayer({
+       "opacity": 0.6,
+   });
+   //天気レイヤを重ねる地図レイヤを作成(今回のサンプルでは通常地図を設定)
+   var maplayer = new Y.NormalLayer();
+   //地図 + 天気レイヤを追加
+   map.addLayerSet("weather", new Y.LayerSet("地図+天気", [maplayer, weather]));
+   //レイヤを選択するコントロールを追加
+   //スライダーバーを追加
+   map.addControl(new Y.SliderZoomControlHorizontal());
+   //地図を描画
+   map.drawMap(new Y.LatLng(35.665627,139.730738), 6, "weather");
+   //天気データを更新
+   weather.UpdateWeather();
+   //5分間毎に自動更新するように設定
+   weather.setAutoUpdateInterval(5);
+   //自動更新スタート
+   weather.startAutoUpdate();
+} 
+ 
+//  window.onload = function() {
+//   let ymap = new Y.Map("around_map", {
+//     configure : {
+//         doubleClickZoom : true,
+//         scrollWheelZoom : true,
+//         dragging : true
+//       }
+//   });
+//   //天気レイヤ作成
+//   let weather = new Y.WeatherMapLayer({
+//       "opacity": 0.6,
+//   });
+//   //天気レイヤを重ねる地図レイヤを作成(今回のサンプルでは通常地図を設定)
+//   let maplayer = new Y.NormalLayer();
+//   //地図 + 天気レイヤを追加
+//   map.addLayerSet("weather", new Y.LayerSet("地図+天気", [maplayer, weather]));
+//   //レイヤを選択するコントロールを追加
+//   //スライダーバーを追加
+//   map.addControl(new Y.SliderZoomControlHorizontal());
+
+//   function getPosition() {
+//     navigator.geolocation.getCurrentPosition(
+//       function(position) {
+//         let latitude  = position.coords.latitude;
+//         let longitude = position.coords.longitude;
+//         console.log("緯度:"+latitude+",経度"+longitude);
+//       });
+//   ymap.drawMap(new Y.LatLng(latitude,longitude), 10, "weather");
+//   };
+//   //天気データを更新
+//   weather.UpdateWeather();
+//   //5分間毎に自動更新するように設定
+//   weather.setAutoUpdateInterval(5);
+//   //自動更新スタート
+//   weather.startAutoUpdate();
+// };
+    
+</script>
+<script src="https://map.yahooapis.jp/js/V1/jsapi?appid=dj00aiZpPVJqeXZqTUJUbTdNTSZzPWNvbnN1bWVyc2VjcmV0Jng9OTk-"></script>
+</body>
+</html>

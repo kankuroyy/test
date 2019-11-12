@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<title>掲示板</title>
+
+<!-- **TODO** 以下を書き換えてください★ -->
+<!-- Firebaseコンソール画面でプロジェクトを作成し、
+  「ウェブアプリにFirebaseを追加」のスクリプトを貼り付け -->
+<script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyD55c4MqN57OvLO-9xaCrUkPML57lv-1bc",
+    authDomain: "test-bbs2.firebaseapp.com",
+    databaseURL: "https://test-bbs2.firebaseio.com",
+    storageBucket: "test-bbs2.appspot.com",
+    messagingSenderId: "323108580962"
+  };
+  firebase.initializeApp(config);
+</script>  
+  
+<!-- ここまで書き換え -->
+
+</head><body>
+  <div style="text-align:right">
+    <button id="signin_btn" onclick="signin()">ログイン</button></div>
+  <h1>掲示板</h1>
+  <div><textarea id="txt" rows="4" cols="80"></textarea></div>
+  <div><button onclick="post()">投稿</button></div>
+  <div><hr></div>
+  <div><ul id="logs"></ul></div>
+  <script>
+  function $(id) { return document.getElementById(id); }
+  // Firebaseのデータベースを取得
+  var db = firebase.database();
+  var bbs_db = db.ref("/bbs/logs");
+  // ログインしているか確認する
+  firebase.auth().onAuthStateChanged( user => {
+    var msg = "ログイン";
+    if (user) {
+      msg = user.displayName + "のログアウト";
+      setEvent();
+    }
+    $('signin_btn').innerHTML = msg;
+  });
+  function signin() {
+    if (firebase.auth().currentUser) { // 既にログインしているならログアウト
+      firebase.auth().signOut();
+    } else {
+      // ログインしてなければ、ログイン画面をポップアップ
+      var provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().signInWithPopup(provider);
+    }
+  }
+  // ログが追加された時の処理を記述
+  function addLog(data) {
+    var v = data.val();
+    var e = document.getElementById("logs");
+    var li = document.createElement("li");
+    li.innerHTML = v.user + ": " + v.text;
+    e.appendChild(li);
+  }
+  // データベースに変更があれば内容を通知するよう設定
+  function setEvent() {
+    bbs_db.limitToLast(10).on("child_added", addLog);
+  }
+  // 投稿ボタンが押された時
+  function post() {
+    var txt = document.getElementById("txt");
+    var cur = firebase.auth().currentUser;
+    if (!cur) {
+      alert("先にログインしてください!"); return;
+    }
+    bbs_db.push({ text: txt.value, user:cur.displayName });
+    txt.value = "";
+  }
+  </script>
+</body></html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>oneteam</title>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title">   
+        <div class="log">
+            <img src="./imgs/1_Primary_logo_on_transparent_182x71.png" alt="">
+            <p>one teamで<br>もっと簡単な情報共有を、<br>もっと効果的なコミュニケーションを、<br>もっと安全な取材を</p>
+        </div>
+        
+    </div>
+    
+    <div id="firebaseui-auth-container"></div>
+    <div id="loader">Loading...</div>
+
+    <style>
+        .title{
+            margin-left: 10rem;
+            display: flex;
+            justify-content: center;
+            font-family: 'Noto Sans JP', sans-serif;
+            color:rgb(105, 83, 83);
+        }
+    </style>
+
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+            apiKey: "AIzaSyDHCI9HelAf6SLGaO8BCrm4f20TvFeyhlU",
+            authDomain: "labs-2e127.firebaseapp.com",
+            databaseURL: "https://labs-2e127.firebaseio.com",
+            projectId: "labs-2e127",
+            storageBucket: "labs-2e127.appspot.com",
+            messagingSenderId: "746225726271",
+            appId: "1:746225726271:web:5590c90b37a9c2b87b198a"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+    <script type="text/javascript">
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+        var uiConfig = {
+            callbacks: {
+                signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+                    return true;
+                },
+                uiShown: function () {
+                    document.getElementById('loader').style.display = 'none';
+                }
+            },
+            signInFlow: 'popup',
+            signInSuccessUrl: 'index.html',
+            signInOptions: [
+                firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                firebase.auth.EmailAuthProvider.PROVIDER_ID,
+            ],
+        };
+        ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
+</body>
+
+</html>

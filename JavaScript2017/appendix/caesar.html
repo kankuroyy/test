@@ -1,0 +1,33 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8">
+<style> textarea { background-color: #f0ffff; } </style>
+</head><body><h1>シーザー暗号</h1>
+  <textarea id="src" rows="4" cols="80"></textarea><br>
+  <button onclick="encrypt()">[↓] 暗号化</button>
+  <button onclick="clearSrc()">クリア</button>
+  <button onclick="decrypt()">[↑] 復号化</button><br>
+  <textarea id="des" rows="4" cols="80"></textarea>
+<script type="text/javascript">
+// シーザー暗号で暗号化する
+function encrypt() {
+  var src = convertCaesar($("src").value, 10);
+  $("des").value = encodeURIComponent(src);
+}
+// シーザー暗号を復号化する
+function decrypt() {
+  var src = decodeURIComponent($("des").value);
+  $("src").value = convertCaesar(src, -10);
+}
+// 変換処理
+function convertCaesar(str, shift) {
+  var res = "";
+  for (var i = 0; i < str.length; i++) {
+    var c = str.charCodeAt(i);
+    if (c < 0) c += 256;
+    c = (c + shift) % 256;
+    res += String.fromCharCode(c);
+  }
+  return res;
+}
+function clearSrc() { $("src").value = ""; }
+function $(id) { return document.getElementById(id); }
+</script></body></html>

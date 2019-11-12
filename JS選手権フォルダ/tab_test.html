@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <ul class="tab-list" id="tab-1">
+          <li class="tab-item is-open">
+            <a href="#Now" data-toggle>報告</a>
+          </li>
+          <li class="tab-item">
+            <a href="#VoiceInput" data-toggle>音声</a>
+          </li>
+          <li class="tab-item">
+            <a href="#Chat" data-toggle>チャット</a>
+          </li>
+          <li class="tab-item">
+            <a href="#WebChat" data-toggle>web会議</a>
+          </li>
+          <li class="tab-item">
+            <a href="#Around" data-toggle>周辺情報</a>
+          </li>
+        </ul>
+
+        <div class="tab-content is-open" id="Now">
+          <p>にゃー<br />にゃー<br />にゃー</p>
+        </div>
+        <div class="tab-content" id="VoiceInput">
+          <p>わん<br />わん<br />わん</p>
+        </div>
+        <div class="tab-content" id="Chat">
+            <p>にゃー<br />にゃー<br />にゃー</p>
+        </div>
+        <div class="tab-content" id="WebChat">
+          <p>にゃー<br />にゃー<br />にゃー</p>
+        </div>
+        <div class="tab-content" id="Around">
+          <p>わん<br />わん<br />わん</p>
+        </div>
+    </div>
+
+
+<style>
+    .container {
+        padding: 1rem;
+      }
+      
+      .tab-list {
+        border-bottom: 1px solid #dedede;
+        display: flex;
+        list-style: none;
+        margin: 0 0 0.5rem 0;
+        padding: 0;
+      }
+      
+      .tab-item {
+        border: 1px solid transparent;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        cursor: pointer;
+        /* 親要素の下ボーダーが見えなくなるように 1px 下にずらす */
+        margin-bottom: -1px;
+        margin-left: 0.5rem;
+        padding: 0.75rem 1rem;
+      }
+      
+      .tab-item.is-open {
+        border-color: #dedede;
+        border-bottom-color: #fff;
+        color: #fc5185;
+      }
+      
+      .tab-item a {
+        color: inherit;
+        text-decoration: none;
+      }
+      
+      .tab-content {
+        display: none;
+      }
+      
+      .tab-content.is-open {
+        display: block;
+      }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tab = document.getElementById('tab-1');
+  new Tab(tab);
+});
+
+/**
+ * タブ
+ * @property {NodeList} toggles タブ要素
+ */
+function Tab(tab) {
+  this.toggles = tab.querySelectorAll('[data-toggle]');
+  
+  this.handleClick();
+}
+
+/**
+ * タブをクリックした時の動作
+ */
+Tab.prototype.handleClick = function() {
+  this.toggles.forEach(toggle => {
+    toggle.addEventListener('click', event => {
+      event.preventDefault();
+      // 先にすべて閉じておく
+      this.closeAll();
+      // リンクの親要素に開いた表現のクラスを追加
+      toggle.parentNode.classList.add('is-open');
+      // クリックされたタブに対応するコンテンツを表示
+      const target = toggle.getAttribute('href');
+      const content = document.querySelector(target);
+      content.classList.add('is-open');
+    });
+  });
+};
+
+/**
+ * タブをすべて閉じる
+ */
+Tab.prototype.closeAll = function() {
+  this.toggles.forEach(toggle => {
+    toggle.parentNode.classList.remove('is-open');
+    const target = toggle.getAttribute('href');
+    const content = document.querySelector(target);
+    content.classList.remove('is-open');
+  });
+};
+
+
+</script>
+
+</body>
+</html>

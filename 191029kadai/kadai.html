@@ -12,6 +12,16 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="css/style.css">
     <title>他人のふんどし（名言どろぼう）帳</title>
+    <meta name="theme-color" content="#F8F7F8">
+    <link rel="manifest" href="./manifest.json"> 
+    <script>
+        if('serviceWorker' in navigator){
+            navigator.serviceWorker.register('./sw.js');
+        }
+    </script>
+    
+    
+    
 </head>
 <body>
     <header id="header">
